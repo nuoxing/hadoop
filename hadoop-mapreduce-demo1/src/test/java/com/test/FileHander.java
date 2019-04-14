@@ -20,7 +20,7 @@ public class FileHander {
 	
 
 	public class FileSystemAPI {
-		private static final String BASE_URL = "hdfs://192.168.88.128:9000";
+		private static final String BASE_URL = "hdfs://72.19.15.11:9000";
 		/**
 		 * 追加到文件
 		 * @throws IOException 
@@ -68,7 +68,7 @@ public class FileHander {
 		public void testCreateNewFile() throws IOException{
 			Configuration conf = new Configuration();
 			FileSystem fs = FileSystem.get(URI.create(BASE_URL), conf);
-			Path path = new Path("/user/root/input/5.txt");
+			Path path = new Path("/5.txt");
 			fs.createNewFile(path);
 		}
 		/**删除文件
