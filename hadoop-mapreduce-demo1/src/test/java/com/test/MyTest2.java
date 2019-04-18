@@ -22,13 +22,13 @@ public class MyTest2 {
 	public static void main(String[] args) {
 		try {
 			//可以不写 指定hadoop安装目录
-		    //System.setProperty("hadoop.home.dir", "F:\\hadoop\\hadoop-2.7.3");
+		    System.setProperty("hadoop.home.dir", "D:\\hadoop-2.6.5");
 			//输入路径
-	        String dst = "hdfs://172.18.9.20:9000/user/hadoop/output/access_res/part-r-00000";
+	        String dst = "hdfs://192.168.200.156:9000/a.txt";
 	        //输出路径，必须是不存在的，空文件加也不行。
-	        String dstOut = "hdfs://172.18.9.20:9000/user/hadoop/output/access_res2";
+	        String dstOut = "hdfs://192.168.200.156:9000/a2";
 	        Configuration hadoopConfig = new Configuration();///加载配置文件
-	        Job job = new Job(hadoopConfig);//创建一个job,供JobTracker使用
+	        Job job = Job.getInstance(hadoopConfig);//创建一个job,供JobTracker使用
 	        
 	        //如果需要打成jar运行，需要下面这句
 	        //job.setJarByClass(NewMaxTemperature.class);

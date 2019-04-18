@@ -17,15 +17,16 @@ public class UploadToHdfs {
 
 	public static void main(String[] args) {
 		// System.setProperty("hadoop.home.dir", "D:\\hadoop-2.6.5");
-		System.out.println("输入文件=" + args[0]);
-		String hdfs = "hdfs://172.19.15.11:9000";
-		String localFilePath = args[0];
+		System.out.println("输入文件=" + args[1]);
+		//String hdfs = "hdfs://192.168.200.156:9000";
+		String hdfs = args[0];
+		String localFilePath = args[1];
 		// String hdfsFilePath =
 		// "hdfs://172.18.9.20:9000/user/hadoop/input/access_2013_05_30.log";
 		// String hdfsFilePath =
 		// "hdfs://172.19.15.11:9000/user3/hadoop/input/aa2.txt";
-		System.out.println("输出文件=" + args[1]);
-		String hdfsFilePath = args[1];
+		System.out.println("输出文件=" + args[2]);
+		String hdfsFilePath = args[2];
 		Configuration conf = new Configuration();
 
 		try {
