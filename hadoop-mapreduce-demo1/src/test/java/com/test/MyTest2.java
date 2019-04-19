@@ -9,6 +9,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+import com.swy.MyMap;
 import com.swy.MyMapper2;
 import com.swy.MyReduce2;
 
@@ -22,11 +23,11 @@ public class MyTest2 {
 	public static void main(String[] args) {
 		try {
 			//可以不写 指定hadoop安装目录
-		    System.setProperty("hadoop.home.dir", "D:\\hadoop-2.6.5");
+		    //System.setProperty("hadoop.home.dir", "D:\\hadoop-2.6.5");
 			//输入路径
-	        String dst = "hdfs://192.168.200.156:9000/a.txt";
+	        String dst = "F:/key.txt";
 	        //输出路径，必须是不存在的，空文件加也不行。
-	        String dstOut = "hdfs://192.168.200.156:9000/a2";
+	        String dstOut = "F:/a2";
 	        Configuration hadoopConfig = new Configuration();///加载配置文件
 	        Job job = Job.getInstance(hadoopConfig);//创建一个job,供JobTracker使用
 	        
@@ -36,9 +37,11 @@ public class MyTest2 {
 	        //job执行作业时输入和输出文件的路径
 	        FileInputFormat.addInputPath(job, new Path(dst));
 	        FileOutputFormat.setOutputPath(job, new Path(dstOut));
+	        //设置为几 输出文件就有几个
+	       // job.setNumReduceTasks(4);
 
-	        //指定自定义的Mapper和Reducer作为两个阶段的任务处理类
-	        job.setMapperClass(MyMapper2.class);
+	        //指定自  定义的Mapper和Reducer作为两个阶段的任务处理类
+	        job.setMapperClass(MyMap.class);
 	        job.setReducerClass(MyReduce2.class);
 	        
 	        //设置最后输出结果的Key和Value的类型
